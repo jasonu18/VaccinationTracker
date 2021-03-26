@@ -1,14 +1,14 @@
-<%= link_to("<< Back to List", books_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
 
-<div class="books new">
-  <h2>Update Book</h2>
+<div class="patients new">
+  <h2>Update Patient</h2>
 
-  <%= form_for(@book) do |f| %>
+  <%= form_for(@patient) do |f| %>
 
     <%= render(:partial =>'form', :locals => {:f => f}) %>
 
     <div class="form-buttons">
-      <%= f.submit("Update Book") %>
+      <%= f.submit("Update Patient Info") %>
     </div>
 
   <% end %>
