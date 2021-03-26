@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => "books#index"
+  root :to => "patients#index"
   # get 'books/index'
   # get 'books/show'
   # get 'books/new'
@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   #
   resources :books do
+    member do
+      get :delete
+    end
+  end
+
+  resources :patients do
     member do
       get :delete
     end

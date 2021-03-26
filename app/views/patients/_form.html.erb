@@ -2,23 +2,43 @@
 
 <table summary="Patient form fields">
   <tr>
-    <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+    <th>First Name</th>
+    <td><%= f.text_field(:first_name) %></td>
   </tr>
   <tr>
-    <th>Author</th>
-    <td><%= f.text_field(:author) %></td>
+    <th>Last Name</th>
+    <td><%= f.text_field(:last_name) %></td>
   </tr>
   <tr>
-    <th>Genre</th>
-    <td><%= f.select(:genre, ['Fiction','Fantasy','Non-Fiction','Mystery','History','Science Fiction','Horror','Romance','Historical Fiction','Biography','Poetry'], :prompt => 'Select Genre') %></td>
+    <th>Date of Birth</th>
+    <td><%= f.date_select(:dob,{order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: 1400}, {required: true}) %></td>
   </tr>
   <tr>
-    <th>Price</th>
-    <td><%= f.number_field(:price, :step => "0.01") %></td>
+    <th>Address</th>
+    <td><%= f.text_field(:address) %></td>
   </tr>
   <tr>
-    <th>Published-Date</th>
-    <td><%= f.date_select(:published_date,{order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: 1400}, {required: true}) %></td>
+    <th>City</th>
+    <td><%= f.text_field(:city) %></td>
+  </tr>
+  <tr>
+    <th>State</th>
+    <td><%= f.text_field(:state) %></td>
+  </tr>
+  <tr>
+    <th>Phone Number</th>
+    <td><%= f.text_field(:phone_number) %></td>
+  </tr>
+  <tr>
+    <th>Age</th>
+    <td><%= f.number_field(:age) %></td>
+  </tr>
+  <tr>
+    <th>Gender</th>
+    <td><%= f.select(:gender, ['Male','Female','Other'], :prompt => 'Select Gender') %></td>
+  </tr>
+  <tr>
+    <th>Vaccine Type</th>
+    <td><%= f.select(:vaccine_type, ['Pfizer','Moderna','Johnson & Johnson'], :prompt => 'Select Type') %></td>
   </tr>
 </table>

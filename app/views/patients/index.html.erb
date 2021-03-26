@@ -1,34 +1,61 @@
-<div class="Books Index">
-  <h1>Book Collection</h1>
+<% # Links and scripts for datatables css %>
+<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#PatientList').DataTable();
+    });
+</script>
+
+<div class="Patients Index">
+  <h1>Listed Patients</h1>
 
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
   <br>
-  <%= link_to("Add New Book", new_book_path, :class => 'action new') %>
-
-  <table class="listing" summary="Book list">
+  <%= link_to("Add New Patient", new_patient_path, :class => 'action new') %>
+  <br>
+  <br>
+  <table class="listing" id="PatientList">
+    <thead>
     <tr class="header">
-      <th>Title:</th>
-      <th>Author:</th>
-      <th>Genre:</th>
-      <th>Price:</th>
-      <th>Published-Date:</th>
-      <th>Actions:</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Phone Number</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Vaccine Type</th>
+      <th>Actions</th>
     </tr>
-    <% @books.each do |book| %>
+    </thead>
+    <tbody>
+    <% @patients.each do |patient| %>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= book.author %></td>
-      <td><%= book.genre %></td>
-      <td><%= book.price %></td>
-      <td><%= book.published_date %></td>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.dob %></td>
+      <td><%= patient.address %></td>
+      <td><%= patient.city %></td>
+      <td><%= patient.state %></td>
+      <td><%= patient.phone_number %></td>
+      <td><%= patient.age %></td>
+      <td><%= patient.gender %></td>
+      <td><%= patient.vaccine_type %></td>
       <td class="actions">
-        <%= link_to("Show", book_path(book), :class => 'action show') %>
-        <%= link_to("Edit", edit_book_path(book), :class => 'action edit') %>
-        <%= link_to("Delete", delete_book_path(book), :class => 'action delete') %>
+        <%= link_to("Show", patient_path(patient), :class => 'action show') %>
+        <%= link_to("Edit", edit_patient_path(patient), :class => 'action edit') %>
+        <%= link_to("Delete", delete_patient_path(patient), :class => 'action delete') %>
       </td>
     </tr>
     <% end %>
+    </tbody>
   </table>
 </div>

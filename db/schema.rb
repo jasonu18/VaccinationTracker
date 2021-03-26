@@ -26,12 +26,13 @@ ActiveRecord::Schema.define(version: 2021_03_25_225050) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.date "dob"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "age"
-    t.string "brand"
+    t.string "vaccine_type"
     t.string "state"
     t.string "city"
     t.string "gender"
