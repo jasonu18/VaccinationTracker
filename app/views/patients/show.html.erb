@@ -1,37 +1,45 @@
 <%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
 
-<div class="books show">
+<div class="patients show">
 
-  <h2>Show Book</h2>
+  <h2>View Patient</h2>
 
-  <table summary="Book detail view">
+  <table summary="Patient detail view">
     <tr>
-      <th>Title</th>
-      <td><%= @book.title %></td>
+      <th>First Name</th>
+      <td><%= @patient.first_name %></td>
     </tr>
     <tr>
-      <th>Author</th>
-      <td><%= @book.author %></td>
+      <th>Last Name</th>
+      <td><%= @patient.last_name %></td>
     </tr>
     <tr>
-      <th>Genre</th>
-      <td><%= @book.genre %></td>
+      <th>Date of Birth</th>
+      <td><%= @patient.dob %></td>
     </tr>
     <tr>
-      <th>Price</th>
-      <td><%= @book.price %></td>
+      <th>Address</th>
+      <td><%= @patient.address %></td>
     </tr>
     <tr>
-      <th>Published Date</th>
-      <td><%= @book.published_date %></td>
+      <th>City</th>
+      <td><%= @patient.city %></td>
     </tr>
     <tr>
+      <th>State</th>
+      <td><%= @patient.state %></td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Gender</th>
+      <td><%= @patient.gender %></td>
+    </tr>
       <th>Created</th>
-      <td><%= @book.created_at %></td>
+      <td><%= @patient.created_at %></td>
     </tr>
     <tr>
       <th>Updated</th>
-      <td><%= @book.updated_at %></td>
+      <td><%= @patient.updated_at %></td>
     </tr>
   </table>
 </div>
