@@ -23,7 +23,7 @@ default: &default
   username: vaccine_tracker_dev
   password: vaccinepass
   host: localhost
-# port: 5433
+  port: 5433
 
 development:
   <<: *default

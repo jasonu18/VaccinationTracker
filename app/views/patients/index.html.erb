@@ -53,6 +53,7 @@
         <%= link_to("Show", patient_path(patient), :class => 'action show') %>
         <%= link_to("Edit", edit_patient_path(patient), :class => 'action edit') %>
         <%= link_to("Delete", delete_patient_path(patient), :class => 'action delete') %>
+        <%= link_to("QR Code", qr_code_patient_url(patient), :class => 'action qr_code') %>
       </td>
     </tr>
     <% end %>

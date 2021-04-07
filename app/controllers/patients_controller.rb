@@ -45,6 +45,28 @@ class PatientsController < ApplicationController
     redirect_to(patients_path, notice: "Deleted Patient")
   end
 
+  def qr_code
+    @patient = Patient.find(params[:id])
+    @record_url = vacc_rec_patient_url(@patient)
+    @qr = RQRCode::QRCode.new(@record_url, size: 10, level: :h)
+    @png = @qr.as_png(
+      bit_depth: 1,
+      border_modules: 4,
+      color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+      color: 'black',
+      file: nil,
+      fill: 'white',
+      module_px_size: 6,
+      resize_exactly_to: false,
+      resize_gte_to: false,
+      size: 400
+    )
+  end
+
+  def vacc_rec
+    @patient = Patient.find(params[:id])
+  end
+
   private
 
   def patient_params
