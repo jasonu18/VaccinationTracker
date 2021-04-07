@@ -1,0 +1,21 @@
+<%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
+
+<div class="patients show">
+
+  <h2>View Patient</h2>
+
+  <table summary="Patient detail view">
+    <tr>
+      <th>First Name</th>
+      <td><%= @patient.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @patient.last_name %></td>
+    </tr>
+    <tr>
+      <th>Vaccination Type</th>
+      <td><%= @patient.vaccine_type %></td>
+    </tr>
+  </table>
+</div>
