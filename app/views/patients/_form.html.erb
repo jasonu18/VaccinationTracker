@@ -41,4 +41,8 @@
     <th>Vaccine Type</th>
     <td><%= f.select(:vaccine_type, ['Pfizer','Moderna','Johnson & Johnson'], :prompt => 'Select Type') %></td>
   </tr>
+  <tr>
+    <th>Upload Image</th>
+    <td><%= f.file_field :avatar %></td>
+  </tr>
 </table>
