@@ -23,6 +23,7 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
+    @patient.avatar.attach(params[:avatar])
   end
 
   def update
@@ -80,7 +81,8 @@ class PatientsController < ApplicationController
       :vaccine_type,
       :state,
       :city,
-      :gender
+      :gender,
+      :avatar
     )
   end
 
