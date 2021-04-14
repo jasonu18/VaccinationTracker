@@ -5,7 +5,7 @@
   <h2>View Patient</h2>
 
   <% if @patient.avatar.attached? %>
-    <image src="<%= (url_for(@patient.avatar)) %>">
+    <image style="width: 500px;" src="<%= (url_for(@patient.avatar)) %>">
   <% end %>
 
   <table summary="Patient detail view">
