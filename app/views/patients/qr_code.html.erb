@@ -1,0 +1,13 @@
+<p><%= link_to("<< Back",patients_path, :class => 'back-Link') %></p>
+
+<h1>
+  <%= @patient.first_name %>  <%= @patient.last_name %>
+</h1>
+
+<%#= @qr.as_svg().html_safe%>
+<img src="<%= @png.to_data_url %>" />
+
+<br>
+<!--<p> Url for what should be encoded in qr_code <br>-->
+<!--<b>LINK:</b> <%#= @record_url %>-->
+<!--</p>-->

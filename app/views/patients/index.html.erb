@@ -3,15 +3,91 @@
 <link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#PatientList').DataTable();
-    });
-</script>
 
-<div class="Patients Index">
-  <h1>Listed Patients</h1>
+<html>
+<head>
+
+  <style>
+      .header {
+          background-color: gray;
+          text-align: center;
+          color: white;
+          margin: 0 auto;
+      }
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 1px solid #e7e7e7;
+          background-color: #f3f3f3;
+      }
+
+      li {
+          float: left;
+      }
+
+      li a {
+          display: block;
+          color: #666;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+          background-color: #ddd;
+      }
+
+      li a.active {
+          color: white;
+          background-color: #4CAF50;
+      }
+
+      @import url('https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css');
+      td.details-control {
+          background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat center center;
+          cursor: pointer;
+      }
+      td.details-control:hover{
+          background-color:#AF8B8B;
+      }
+
+      tr.shown td.details-control {
+          background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat center center;
+          background-color:#AF8B8B;
+      }
+
+      .patient_table_header{
+          background-color:#500000;
+          color:white;
+      }
+
+      .patient_index_title{
+          text-align: center;
+      }
+
+      tr.odd{
+          background-color:#DFD1D1 !important;
+      }
+
+      tr.even td.sorting_1{
+          background-color:#DFD1D1 !important;
+      }
+
+      tr.odd td.sorting_1{
+          background-color:#CFB9B9 !important;
+      }
+
+  </style>
+</head>
+</html>
+
+<div>
+  <h1 class="patient_index_title">Listed Patients</h1>
 
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
@@ -22,40 +98,87 @@
   <br>
   <table class="listing" id="PatientList">
     <thead>
-    <tr class="header">
-      <th>First Name</th>
+    <tr class="patient_table_header">
+      <th></th>
       <th>Last Name</th>
-      <th>Date of Birth</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Phone Number</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Vaccine Type</th>
-      <th>Actions</th>
+      <th>First Name</th>
     </tr>
     </thead>
-    <tbody>
-    <% @patients.each do |patient| %>
-    <tr>
-      <td><%= patient.first_name %></td>
-      <td><%= patient.last_name %></td>
-      <td><%= patient.dob %></td>
-      <td><%= patient.address %></td>
-      <td><%= patient.city %></td>
-      <td><%= patient.state %></td>
-      <td><%= patient.phone_number %></td>
-      <td><%= patient.age %></td>
-      <td><%= patient.gender %></td>
-      <td><%= patient.vaccine_type %></td>
-      <td class="actions">
-        <%= link_to("Show", patient_path(patient), :class => 'action show') %>
-        <%= link_to("Edit", edit_patient_path(patient), :class => 'action edit') %>
-        <%= link_to("Delete", delete_patient_path(patient), :class => 'action delete') %>
-      </td>
-    </tr>
-    <% end %>
-    </tbody>
   </table>
 </div>
+
+<script>
+    /* Formatting function for row details - ONGOING BILLS */
+    function format( d ) {
+        var showUrl=`/patients/${d['id']}`;
+        var editUrl = `/patients/${d['id']}/edit`;
+        var deleteUrl = `/patients/${d['id']}/delete`;
+        var qrcodeUrl = `/patients/${d['id']}/qr_code`;
+
+
+        // `d` is the original data object for the row
+        var block = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+            '<tr>'+
+            '<td>Name:</td>'+
+            '<td>'+d.first_name+ ' ' +d.last_name+ '</td>'+
+            '</tr>'+
+            '<tr>'+
+            '<td>Phone Number:</td>'+
+            '<td>'+d.phone_number+'</td>'+
+            '</tr>'+
+            '<tr>'+
+            '<td>Age:</td>'+
+            '<td>'+d.age+'</td>'+
+            '</tr>'+
+            '<tr>'+
+            '<td>Actions:</td>'+
+            '<td class="actions">'+
+            `<a class='action show' href='${showUrl}'>Show</a>`+
+            ' - '+
+            `<a class='action show' href='${qrcodeUrl}'>QR Code</a>`+
+            ' - '+
+            `<a class='action show' href='${editUrl}'>Update</a>`+
+            ' - '+
+            `<a class='action show' href='${deleteUrl}'>Delete</a>`+
+            '</td>'+
+            '</tr>'+
+            '</table>';
+
+        return block;
+    }
+
+
+    $(document).ready(function() {
+        var table = $('#PatientList').DataTable( {
+            "data": <%= @patients.as_json.to_json.html_safe %>,
+            "columns": [
+                {
+                    "className":      'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+                { "data": "last_name" },
+                { "data": "first_name" }
+
+            ],
+            "order": [[1, 'asc']]
+        } );
+// Add event listener for opening and closing details
+        $('#PatientList tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+            if ( row.child.isShown() ) {
+// This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+// Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        } );
+    } );
+
+</script>
