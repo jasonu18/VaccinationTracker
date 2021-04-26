@@ -16,7 +16,7 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    @patient.image_url = url_for(@patient.avatar)
+    # @patient.image_url = url_for(@patient.avatar)
     if @patient.save
       redirect_to(patients_path, notice: "Added Patient")
     else
