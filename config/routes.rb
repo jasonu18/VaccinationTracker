@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   get 'patients/delete'
 
   #
-  resources :books do
-    member do
-      get :delete
-    end
-  end
+  # resources :books do
+  #   member do
+  #     get :delete
+  #   end
+  # end
 
   resources :patients do
     member do
