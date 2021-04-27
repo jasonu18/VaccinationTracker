@@ -1,6 +1,9 @@
 class PatientsController < ApplicationController
+  require 'json'
+
   def index
     @patients = Patient.order('last_name ASC')
+    File.open("public/temp.json", "w"){ |f| f << @patients.to_json}
   end
 
   def show
@@ -13,6 +16,7 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
+    # @patient.image_url = url_for(@patient.avatar)
     if @patient.save
       redirect_to(patients_path, notice: "Added Patient")
     else
@@ -23,11 +27,12 @@ class PatientsController < ApplicationController
 
   def edit
     @patient = Patient.find(params[:id])
-    @patient.avatar.attach(params[:avatar])
   end
 
   def update
     @patient = Patient.find(params[:id])
+    @patient.avatar.attach(params[:avatar])
+    # @patient.image_url = url_for(@patient.avatar)
     if @patient.update(patient_params)
       redirect_to(patients_path, notice: "Updated Patient")
     else
