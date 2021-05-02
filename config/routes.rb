@@ -1,23 +1,11 @@
 Rails.application.routes.draw do
-  root :to => "patients#index"
-  # get 'books/index'
-  # get 'books/show'
-  # get 'books/new'
-  # get 'books/edit'
-  # get 'books/delete'
-  #
+  root :to => "patients#home"
   get 'patients/index'
   get 'patients/show'
   get 'patients/new'
   get 'patients/edit'
   get 'patients/delete'
-
-  #
-  # resources :books do
-  #   member do
-  #     get :delete
-  #   end
-  # end
+  get 'patients/home'
 
   resources :patients do
     member do

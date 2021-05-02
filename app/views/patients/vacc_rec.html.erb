@@ -1,6 +1,58 @@
-<%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
+<style>
+    .patients-show{
+        margin: auto;
+        text-align: center;
+    }
 
-<div class="patients show">
+    th, td{
+        margin: auto;
+        text-align: left;
+        width: 50%;
+    }
+
+    th{
+        padding-right: 15px;
+    }
+
+    .patient-table{
+        margin: auto;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #500000;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #d22c2c;
+    }
+
+</style>
+
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li class="active"><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
+<div class="patients-show">
 
   <h2>View Patient</h2>
 
@@ -8,7 +60,7 @@
     <image style="width: 500px;" src="<%= (url_for(@patient.avatar)) %>"></image>
   <% end %>
 
-  <table summary="Patient detail view">
+  <table summary="Patient detail view" class="patient-table">
     <tr>
       <th>First Name</th>
       <td><%= @patient.first_name %></td>
