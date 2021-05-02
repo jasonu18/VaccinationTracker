@@ -1,6 +1,23 @@
 <%= error_messages_for(f.object) %>
 
-<table summary="Patient form fields">
+<style>
+  .patient-table{
+      margin: auto;
+      text-align: center;
+  }
+
+  th, td{
+      text-align: left;
+      /*border: 3px solid green;*/
+  }
+
+  th{
+      padding-right: 25px;
+  }
+</style>
+
+
+<table summary="Patient form fields" class="patient-table">
   <tr>
     <th>First Name</th>
     <td><%= f.text_field(:first_name) %></td>

@@ -1,11 +1,51 @@
-<%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
+<style>
+  .patients-new{
+      margin: auto;
+      text-align: center;
+  }
 
-<div class="patients new">
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #500000;
+  }
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #d22c2c;
+  }
+
+</style>
+
+
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li class="active"><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
+<div class="patients-new">
   <h2>Add Patient</h2>
 
-  <%= form_for(@patient, :url => patients_path, :method => 'post') do |f| %>
+  <%= form_for(@patient, :url => patients_index_path, :method => 'post') do |f| %>
 
     <%= render(:partial =>'form', :locals => {:f => f}) %>
+    <br>
 
     <div class="form-buttons">
       <%= f.submit("Add Patient") %>

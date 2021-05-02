@@ -11,19 +11,13 @@
 <head>
 
   <style>
-      .header {
-          background-color: gray;
-          text-align: center;
-          color: white;
-          margin: 0 auto;
-      }
       ul {
           list-style-type: none;
           margin: 0;
           padding: 0;
           overflow: hidden;
           border: 1px solid #e7e7e7;
-          background-color: #f3f3f3;
+          background-color: #500000;
       }
 
       li {
@@ -32,19 +26,14 @@
 
       li a {
           display: block;
-          color: #666;
+          color: white;
           text-align: center;
           padding: 14px 16px;
           text-decoration: none;
       }
 
       li a:hover:not(.active) {
-          background-color: #ddd;
-      }
-
-      li a.active {
-          color: white;
-          background-color: #4CAF50;
+          background-color: #d22c2c;
       }
 
       @import url('https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css');
@@ -86,15 +75,20 @@
 </head>
 </html>
 
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li class="active"><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
 <div>
-  <h1 class="patient_index_title">Listed Patients</h1>
+  <h1 class="patient_index_title">Vaccinated Patients</h1>
 
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
-  <br>
-  <%= link_to("Add New Patient", new_patient_path, :class => 'action new') %>
-  <br>
+  <%= link_to("Add New Patient", new_patient_path, :class => 'action new') %> <br>
   <br>
   <table class="listing" id="PatientList">
     <thead>
@@ -108,7 +102,7 @@
 </div>
 
 <script>
-    /* Formatting function for row details - ONGOING BILLS */
+    /* Formatting function for row details - ONGOING PATIENTS */
     function format( d ) {
         var showUrl=`/patients/${d['id']}`;
         var editUrl = `/patients/${d['id']}/edit`;

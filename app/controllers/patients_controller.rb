@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.order('last_name ASC')
-    File.open("public/temp.json", "w"){ |f| f << @patients.to_json}
+    File.open("public/patient_info.json", "w"){ |f| f << @patients.to_json}
   end
 
   def show

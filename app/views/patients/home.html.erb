@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #500000;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #d22c2c;
+    }
+</style>
+
+<html>
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
+<div class="home-info">
+
+</div>
+
+</html>
+
+
+
