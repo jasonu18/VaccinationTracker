@@ -1,31 +1,17 @@
-https://young-shelf-36276.herokuapp.com/
+https://vaccination-tracker.herokuapp.com/
 
 # Objective
-The primary objective of this assignment is to help you get familiar with Ruby on Rails, and deployment to Heroku. Specifically, we would be building a simple CRUD Application.
+The primary objective of this project is to create a digital alternative to physical vaccination cards that users can easily utilize.
 
-# Assignment Instructions
+# How to Use this Application
 
-1. [Install Rails Gem](https://www.linkedin.com/learning/ruby-on-rails-6-essential-training)
-2. Clone this repostory ```$ git clone <url>```
-3. Design and Develop a Book Collection Application that should have four functionalities - Create, Read, Update, Delete a Book. Step enumerated below:
-    * Create a book model with attributes - title (String), author (String), genre (String), price (Number), published-date (String)
-    * Make the migrations to create a database table
-    * Model your classes adhering to MVC design pattern. 
-    * On a high level the application should contain 5 views -
-      * HomePage - Servers two purpose, first is to view all books, second is to contain handlers (button) to perform the CRUD functions.
-      * Add a Book Page - contain a form with the configuration options, Note: published-date and genre should be drop-down menus.
-      * Update a Book Page - prepopulated with the current details and can be updated.
-      * Show Details Page - to view the details of the book.
-      * Delete Page - should contain a confirmation message.
-    * There should also be a flash notice popping up on the HomePage after performing each operation. 
-    * All the pages should have a link to the HomePage and the routes should be resourceful - REST Guidelines)
-4. Add your changes to the staging area ```$ git add .```
-5. Commit your changes ```$ git commit -m "your commit message"```
-6. Push the changes ```$ git push <remote> <branch>```
-7. Follow the instructions in Lab 1 document on deployment to Heroku.
-  
-# References (Recommended) 
-[Ruby On Rails Linkedin](https://www.linkedin.com/learning/ruby-on-rails-6-essential-training)
-
-[Ruby On Rails - HTTP, MVC and Routes](https://medium.com/the-renaissance-developer/ruby-on-rails-http-mvc-and-routes-f02215a46a84)
+1. Click the patients tab to view a list of all vaccinated patients
+2. Click the plus symbol to view basic patient information and actions
+3. You can add, show, edit, and delete patients:
+    * Add Patients using link on the Patients list page 
+    * Click the "Show" action to view detailed information about the patient
+    * Click the "Edit" action to update information for existing patients
+      * When updating a patient, please reupload an image
+    * Click the "Delete" action to delete the specified patient from the database
+4. Click the "QR Code" action to access the patient QR Code for the vaccination record
 
