@@ -1,3 +1,4 @@
+<!-- style sheet used for the QR Code page -->
 <style>
   .qr-code{
       margin: auto;
@@ -31,7 +32,7 @@
   }
 </style>
 
-
+<!-- navigation bar -->
 <div class="navbar">
   <ul>
     <li><%= link_to("Home", patients_home_path) %></li>
@@ -39,6 +40,7 @@
   </ul>
 </div>
 
+<!-- Display QR Code and Patient Name -->
 <div class="qr-code">
   <h1>
     <%= @patient.first_name %>  <%= @patient.last_name %>

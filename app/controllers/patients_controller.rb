@@ -4,6 +4,8 @@ class PatientsController < ApplicationController
   #list all patients in the index page
   def index
     @patients = Patient.order('last_name ASC')
+
+    #find the latest patient made
     @id = Patient.maximum(:id)
     if(@id != nil)
       @patient = Patient.find(@id)
