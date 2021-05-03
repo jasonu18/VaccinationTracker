@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <style>
-    ul {
+    ul.navbar{
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -9,11 +9,11 @@
         background-color: #500000;
     }
 
-    li {
+    li.navbar {
         float: left;
     }
 
-    li a {
+    li.navbar a {
         display: block;
         color: white;
         text-align: center;
@@ -21,21 +21,35 @@
         text-decoration: none;
     }
 
-    li a:hover:not(.active) {
+    li.navbar a:hover:not(.active) {
         background-color: #d22c2c;
+    }
+
+    .home-info{
+        /*border: 3px solid green;*/
+        margin: auto;
+        text-align: left;
+        width: 25%;
     }
 </style>
 
 <html>
 <div class="navbar">
-  <ul>
-    <li><%= link_to("Home", patients_home_path) %></li>
-    <li><%= link_to("Patients", patients_index_path) %></li>
+  <ul class="navbar">
+    <li class="navbar"><%= link_to("Home", patients_home_path) %></li>
+    <li class="navbar"><%= link_to("Patients", patients_index_path) %></li>
   </ul>
 </div>
 
 <div class="home-info">
+  <h1>Welcome to Vaccination Tracker!</h1>
 
+  <h3>How it works:</h3>
+  <ul>
+    <li>Click the patients tab to view a list of all vaccinated patients</li>
+    <li>You can add, show, edit, and delete patients</li>
+    <li>You can also access a qr code for the patient to view their information</li>
+  </ul>
 </div>
 
 </html>
