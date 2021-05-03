@@ -4,9 +4,11 @@ class PatientsController < ApplicationController
   #list all patients in the index page
   def index
     @patients = Patient.order('last_name ASC')
-
-    @patient = Patient.find(Patient.maximum(:id))
-    File.open("public/patient_info.json", "w"){ |f| f << @patient.to_json}
+    @id = Patient.maximum(:id)
+    if(@id != nil)
+      @patient = Patient.find(@id)
+      File.open("public/patient_info.json", "w"){ |f| f << @patient.to_json}
+    end
   end
 
   #patient to be shown in the show page
