@@ -1,13 +1,50 @@
-<p><%= link_to("<< Back",patients_path, :class => 'back-Link') %></p>
+<style>
+  .qr-code{
+      margin: auto;
+      text-align: center;
+      width: 25%;
+  }
 
-<h1>
-  <%= @patient.first_name %>  <%= @patient.last_name %>
-</h1>
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #500000;
+  }
 
-<%#= @qr.as_svg().html_safe%>
-<img src="<%= @png.to_data_url %>" />
+  li {
+      float: left;
+  }
 
-<br>
-<!--<p> Url for what should be encoded in qr_code <br>-->
-<!--<b>LINK:</b> <%#= @record_url %>-->
-<!--</p>-->
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #d22c2c;
+  }
+</style>
+
+
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li class="active"><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
+<div class="qr-code">
+  <h1>
+    <%= @patient.first_name %>  <%= @patient.last_name %>
+  </h1>
+
+  <img src="<%= @png.to_data_url %>" />
+
+  <br>
+</div>

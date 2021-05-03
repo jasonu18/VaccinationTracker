@@ -1,12 +1,51 @@
-<%= link_to("<< Back to List", patients_path, :class => 'back-link') %>
+<style>
+  .patients-delete{
+      margin: auto;
+      text-align: center;
+      width: 25%;
+  }
 
-<div class="patients delete">
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #500000;
+  }
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #d22c2c;
+  }
+
+</style>
+
+<div class="navbar">
+  <ul>
+    <li><%= link_to("Home", patients_home_path) %></li>
+    <li class="active"><%= link_to("Patients", patients_index_path) %></li>
+  </ul>
+</div>
+
+<div class="patients-delete">
   <h2>Delete Patient</h2>
 
   <%= form_for(@patient, :method => 'delete') do |f| %>
 
     <p>Are you sure you want to permanently delete this Patient from the list?</p>
-    <p><%= @patient.first_name %> <%= @patient.last_name %></p>
+    <p><b><%= @patient.first_name %> <%= @patient.last_name %></b></p>
     <div class="form-buttons">
       <%= f.submit("Delete Patient") %>
     </div>
